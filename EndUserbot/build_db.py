@@ -4,3 +4,5 @@ import config
 def build_db():
     mongo = MongoClient(config.MONGO_DB_URL)
     return mongo.END
+
+db = build_db()
