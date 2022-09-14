@@ -2,6 +2,7 @@ from ..database.afk import *
 from pyrogram.types import Message
 from pyrogram import Client
 import time
+from .utils import eor, get_me
 
 def get_readable_time(seconds: int) -> str:
     count = 0
