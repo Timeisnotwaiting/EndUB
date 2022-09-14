@@ -1,6 +1,6 @@
 from pyrogram import Client, filters, idle
 from config import *
-from EndUB.AlphaPlugins import *
+from EndUserbot.AlphaPlugins import *
 
 USER = Client(":END-USERBOT:", API_ID, API_HASH, STRING_SESSION)
 
