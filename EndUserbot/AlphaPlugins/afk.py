@@ -75,7 +75,21 @@ async def afk_cwf(_, m):
             "`Back alive! No Longer afk.\nWas afk for " + afk_for + "`"
         )
     
-    if m.reply_to_message and not m.from_user.is_self and m.chat.type == "group":
+    if not m.from_user.is_self and m.chat.type == "group":
+        if not m.reply_to_message:
+            xD = await get_me(_)
+            un = "@"+xD.username.lower()
+            if not un in m.text.split().lower():
+                return
+            check = await is_afk(xD.id)
+            if not check:
+                return
+            reason, _time = await get_afk_details(xD.id)
+            afk_for = get_readable_time(int(time.time()-float(_time))) + "s"
+            if not reason == "None":
+                return await m.reply(f"`I am AFK .\n\nAFK Since {afk_for}\nReason : {reason}`")
+            return await m.reply(f"`I am AFK .\n\nAFK Since {afk_for}`")
+            
         check = await is_afk(m.reply_to_message.from_user.id)
         if not check:
             return
@@ -95,6 +109,7 @@ async def afk_cwf(_, m):
         if not reason == "None":
             return await m.reply(f"`I am AFK .\n\nAFK Since {afk_for}\nReason : {reason}`")
         return await m.reply(f"`I am AFK .\n\nAFK Since {afk_for}`")
+
         
     
     
