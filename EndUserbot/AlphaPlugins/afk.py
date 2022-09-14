@@ -18,7 +18,7 @@ async def _afk(_: Client, m: Message):
             if not reason == "None":
                 return await eor(m, f"`I shall be Going afk! because ~` {reason}")
             else:
-                return await eor(m, f"`I shall be Going afk!)
+                return await eor(m, f"`I shall be Going afk!")
         except Exception as e:
             return await eor(m, e)
 
@@ -34,6 +34,6 @@ async def _afk(_: Client, m: Message):
             if not reason == "None":
                 return await eor(m, f"`I shall be Going afk! because ~` {reason}")
             else:
-                return await eor(m, f"`I shall be Going afk!)
+                return await eor(m, f"`I shall be Going afk!")
         except Exception as e:
             return await eor(m, e)
