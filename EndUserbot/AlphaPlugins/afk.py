@@ -37,3 +37,11 @@ async def _afk(_: Client, m: Message):
                 return await eor(m, f"`I shall be Going afk!")
         except Exception as e:
             return await eor(m, e)
+
+async def afk_cwf(_, m):
+    if not m.from_user.is_self:
+        return
+    check = await is_afk(m.from_user.id)
+    if not check:
+        return
+    
