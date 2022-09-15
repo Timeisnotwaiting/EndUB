@@ -6,10 +6,8 @@ async def add_afk(self_id: int, reason: str, time: str):
     await afkdb.insert_one({"self_id": self_id}, {"$set": {"reason": reason, "time": time}})
 
 async def del_afk(self_id: int):
-    find = await afkdb.find_one({"self_id": self_id})
-    reason = find["reason"]
-    time = find["time"]
-    await afkdb.delete_one({"self_id": self_id, "reason": reason, "time": time})
+    find = afkdb.find_one({"self_id": self_id})
+    await afkdb.delete_one({"self_id": self_id})
 
 async def is_afk(self_id: int):
     find = afkdb.find_one({"self_id": self_id})
