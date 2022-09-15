@@ -54,7 +54,7 @@ async def _afk(_: Client, m: Message):
             reason = "None"
         time = time.time()
         try:
-            await add_afk(m.from_user.id, reason, time)
+            await add_afk(m.from_user.id, reason, str(time))
             if not reason == "None":
                 return await eor(m, f"`I shall be Going afk! because ~` {reason}")
             else:
