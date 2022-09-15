@@ -1,1 +1,1 @@
-from .afk import *
+
