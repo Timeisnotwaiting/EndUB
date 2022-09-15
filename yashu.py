@@ -14,6 +14,9 @@ async def __afk(_, m):
 
 USER.start()
 get = USER.get_me()
+OWNER = []
+id = get.id
+OWNER.append(id)
 un = get.username
 print(f"@{un} started successfully...!")
 idle()
