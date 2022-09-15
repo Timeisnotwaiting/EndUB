@@ -11,7 +11,7 @@ async def backup(_, m):
     if m.from_user.id != me.id:
         return
     try:
-        LOG = await get_log()
+        xD, LOG = await get_log()
     except:
         return await eor(m, f"<i>Set log group first..! Use {hl}setlog < group id ></i>")
     if str(m.chat.id)[0] == "-":
