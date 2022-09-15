@@ -1,5 +1,5 @@
 from ..database.afk import *
-from importer import OWNER
+from ..database.owner import owner
 from pyrogram.types import Message
 from pyrogram import Client
 import time
@@ -29,7 +29,7 @@ def get_readable_time(seconds: int) -> str:
     return ping_time
 
 async def _afk(_: Client, m: Message):
-    if not m.from_user.id in OWNER:
+    if not await owner(m.from_user.id):
         return
     if await is_afk(m.from_user.id):
         await del_afk(m.from_user.id)
@@ -64,7 +64,7 @@ async def _afk(_: Client, m: Message):
             return await eor(m, e)
 
 async def afk_cwf(_, m):
-    if m.from_user.id in OWNER and not m.text.split()[0][1:4].lower() == "afk":
+    if await owner(m.from_user.id) and not m.text.split()[0][1:4].lower() == "afk":
         check = await is_afk(m.from_user.id)
         if not check:
             return
@@ -76,7 +76,7 @@ async def afk_cwf(_, m):
             "`Back alive! No Longer afk.\nWas afk for " + afk_for + "`"
         )
     
-    if not m.from_user.id in OWNER and m.chat.type == "group":
+    if not await owner(m.from_user.id) and m.chat.type == "group":
         if not m.reply_to_message:
             xD = await get_me(_)
             un = "@"+xD.username.lower()
@@ -100,7 +100,7 @@ async def afk_cwf(_, m):
             return await m.reply(f"`I am AFK .\n\nAFK Since {afk_for}\nReason : {reason}`")
         return await m.reply(f"`I am AFK .\n\nAFK Since {afk_for}`")
 
-    if not m.from_user.id in OWNER and m.chat.type == "private":
+    if not await owner(m.from_user.id) and m.chat.type == "private":
         xD = await get_me(_)
         check = await is_afk(xD.id)
         if not check:
