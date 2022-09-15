@@ -1,6 +1,6 @@
 from pyrogram import Client
 from pyrogram.types import Message
-from ..database import setlog, get_log()
+from ..database import setlog, get_log
 from .utils import eor
 from config import COMMAND_HANDLER as hl
 
