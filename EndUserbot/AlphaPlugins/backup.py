@@ -1,16 +1,20 @@
 from pyrogram import Client
 from pyrogram.types import Message
-from ..database import setlog
+from ..database import setlog, get_log()
 from .utils import eor
+from config import COMMAND_HANDLER as hl
 
 
 async def backup(_, m):
     me = await _.get_me()
     if m.from_user.id != me.id:
         return
+    LOG = await get_log()
+    if not LOG:
+        return await eor(m, f"<i>Set log group first..! Use {hl}setlog < group id></i>")
     if str(m.chat.id)[0] == "-":
-        return await eor(_, m, "Only can backup private chats...")
-    await eor(_, m, "Backing up chat.....")
+        return await eor(m, "Only can backup private chats...")
+    await eor(m, "Backing up chat.....")
     ch = _.get_chat_history(m.chat.id)
     MSG_ID = []
     ok = await m.reply("getting history....")
@@ -25,7 +29,7 @@ async def backup(_, m):
     t_end = time.time()
     itt = str(t_end-t_st).index(".")
     tt = str(t_end-t_st)[0:itt]
-    await eor(_, m, f"{len(MSG_ID)} messages found...\n\ntime taken :- {tt}s")
+    await eor(m, f"{len(MSG_ID)} messages found...\n\ntime taken :- {tt}s")
     b = 0
     a = 0
     n = len(MSG_ID)//50
@@ -57,5 +61,5 @@ async def backup(_, m):
     LVL = time.time()
     PTI= str(LVL-ST).index(".")
     PT = str(LVL-ST)[0:PTI]
-    return await eor(_, m, f"all msges backed up successfully...\n\nTime Elapsed :- {PT}s")
+    return await eor(m, f"all msges backed up successfully...\n\nTime Elapsed :- {PT}s")
 
