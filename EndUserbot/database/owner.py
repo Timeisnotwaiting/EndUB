@@ -1,4 +1,4 @@
-from ..build_mongo import db
+from ..build_db import db
 
 ownerdb = db.owner
 
