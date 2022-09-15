@@ -17,6 +17,10 @@ async def get_sudos_plug(_, m):
 async def backup_plug(_, m):
     await backup(_, m)
 
+@USER.on_message(filters.command("setlog", COMMAND_HANDLER))
+async def setlog_plug(_, m):
+    await set_log(_, m)
+
 USER.start()
 get = USER.get_me()
 OWNER = []
