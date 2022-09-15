@@ -3,14 +3,14 @@ from ..build_db import db
 afkdb = db.afk
 
 async def add_afk(self_id: int, reason: str, time: str):
-    await afkdb.insert_one({"self_id": self_id}, {"$set": {"reason": reason, "time": time}})
+    return await afkdb.insert_one({"self_id": self_id}, {"$set": {"reason": reason, "time": time}})
 
 async def del_afk(self_id: int):
-    find = afkdb.find_one({"self_id": self_id})
-    await afkdb.delete_one({"self_id": self_id})
+    find = await afkdb.find_one({"self_id": self_id})
+    return await afkdb.delete_one({"self_id": self_id})
 
 async def is_afk(self_id: int):
-    find = afkdb.find_one({"self_id": self_id})
+    find = await afkdb.find_one({"self_id": self_id})
     if find:
         return True
     return False
