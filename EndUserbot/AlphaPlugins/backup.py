@@ -5,6 +5,8 @@ from .utils import eor
 from config import COMMAND_HANDLER as hl
 import time
 from pyrogram.errors import *
+import asyncio
+
 
 async def backup(_, m):
     me = await _.get_me()
