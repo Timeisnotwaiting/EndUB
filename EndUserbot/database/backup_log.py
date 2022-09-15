@@ -17,7 +17,7 @@ async def get_log():
     if not umm:
         return False, None
     log = []
-        for _ in await umm.to_list(length=1000000000):
-            log.append(_["chat_id"])
+    for _ in await umm.to_list(length=1000000000):
+        log.append(_["chat_id"])
     return True, log[0]
     
