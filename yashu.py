@@ -1,6 +1,6 @@
 from pyrogram import Client, filters, idle
 from config import *
-from EndUserbot.AlphaPlugins import *
+from EndUserbot.AlphaPlugins.afk import _afk, afk_cwf
 
 USER = Client(":END-USERBOT:", api_id=API_ID, api_hash=API_HASH, session_string=STRING_SESSION)
 
