@@ -9,8 +9,9 @@ async def backup(_, m):
     me = await _.get_me()
     if m.from_user.id != me.id:
         return
-    LOG = await get_log()
-    if not LOG:
+    try:
+        LOG = await get_log()
+    except:
         return await eor(m, f"<i>Set log group first..! Use {hl}setlog < group id></i>")
     if str(m.chat.id)[0] == "-":
         return await eor(m, "Only can backup private chats...")
@@ -63,3 +64,15 @@ async def backup(_, m):
     PT = str(LVL-ST)[0:PTI]
     return await eor(m, f"all msges backed up successfully...\n\nTime Elapsed :- {PT}s")
 
+async def set_log(_, m):
+    me = await _.get_me()
+    if m.from_user.id != me.id:
+        return
+    try:
+        id = int(m.text.split()[1])
+    except:
+        return await eor(m, f"<i>{hl}setlog : chat id :</i>")
+    return await setlog(id), await eor(m, f"<i>Log chat set successfully..!</i>")
+
+    
+     
