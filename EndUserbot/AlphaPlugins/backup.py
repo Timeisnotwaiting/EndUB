@@ -3,6 +3,7 @@ from pyrogram.types import Message
 from ..database import setlog, get_log
 from .utils import eor
 from config import COMMAND_HANDLER as hl
+import time
 
 
 async def backup(_, m):
@@ -12,7 +13,7 @@ async def backup(_, m):
     try:
         LOG = await get_log()
     except:
-        return await eor(m, f"<i>Set log group first..! Use {hl}setlog < group id></i>")
+        return await eor(m, f"<i>Set log group first..! Use {hl}setlog < group id ></i>")
     if str(m.chat.id)[0] == "-":
         return await eor(m, "Only can backup private chats...")
     await eor(m, "Backing up chat.....")
@@ -71,7 +72,7 @@ async def set_log(_, m):
     try:
         id = int(m.text.split()[1])
     except:
-        return await eor(m, f"<i>{hl}setlog : chat id :</i>")
+        return await eor(m, f"<i>{hl}setlog < chat id ></i>")
     return await setlog(id), await eor(m, f"<i>Log chat set successfully..!</i>")
 
     
