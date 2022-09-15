@@ -36,9 +36,9 @@ async def _afk(_: Client, m: Message):
             reason = m.text.split(None, 1)[1]
         else:
             reason = "None"
-        time = time.time()
+        __time = time.time()
         try:
-            await add_afk(m.from_user.id, reason, str(time))
+            await add_afk(m.from_user.id, reason, str(__time))
             if not reason == "None":
                 return await eor(m, f"`I shall be Going afk! because ~` {reason}")
             else:
@@ -52,9 +52,9 @@ async def _afk(_: Client, m: Message):
             reason = m.text.split(None, 1)[1]
         else:
             reason = "None"
-        time = time.time()
+        __time = time.time()
         try:
-            await add_afk(m.from_user.id, reason, str(time))
+            await add_afk(m.from_user.id, reason, str(__time))
             if not reason == "None":
                 return await eor(m, f"`I shall be Going afk! because ~` {reason}")
             else:
