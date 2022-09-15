@@ -1,5 +1,5 @@
 from ..database.afk import *
-from yashu import OWNER
+from importer import OWNER
 from pyrogram.types import Message
 from pyrogram import Client
 import time
