@@ -28,7 +28,7 @@ def get_readable_time(seconds: int) -> str:
     return ping_time
 
 async def _afk(_: Client, m: Message):
-    if not owner(_, m):
+    if not await owner(_, m):
         return
     if await is_afk(m.from_user.id):
         await del_afk(m.from_user.id)
@@ -63,7 +63,7 @@ async def _afk(_: Client, m: Message):
             return await eor(m, e)
 
 async def afk_cwf(_, m):
-    if owner(_, m) and not m.text.split()[0][1:4].lower() == "afk":
+    if await owner(_, m) and not m.text.split()[0][1:4].lower() == "afk":
         check = await is_afk(m.from_user.id)
         if not check:
             return
@@ -75,7 +75,7 @@ async def afk_cwf(_, m):
             "`Back alive! No Longer afk.\nWas afk for " + afk_for + "`"
         )
     
-    if not owner(_, m) and m.chat.type == "group":
+    if not await owner(_, m) and m.chat.type == "group":
         if not m.reply_to_message:
             xD = await get_me(_)
             un = "@"+xD.username.lower()
@@ -99,7 +99,7 @@ async def afk_cwf(_, m):
             return await m.reply(f"`I am AFK .\n\nAFK Since {afk_for}\nReason : {reason}`")
         return await m.reply(f"`I am AFK .\n\nAFK Since {afk_for}`")
 
-    if not owner(_, m) and m.chat.type == "private":
+    if not await owner(_, m) and m.chat.type == "private":
         xD = await get_me(_)
         check = await is_afk(xD.id)
         if not check:
