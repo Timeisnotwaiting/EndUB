@@ -63,7 +63,7 @@ async def _afk(_: Client, m: Message):
             return await eor(m, e)
 
 async def afk_cwf(_, m):
-    if m.from_user.is_self:
+    if m.from_user.is_self and not m.text.split()[0][1:4].lower() == "afk":
         check = await is_afk(m.from_user.id)
         if not check:
             return
