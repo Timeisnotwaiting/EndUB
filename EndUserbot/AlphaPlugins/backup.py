@@ -4,7 +4,7 @@ from ..database import setlog, get_log
 from .utils import eor
 from config import COMMAND_HANDLER as hl
 import time
-
+from pyrogram.errors import *
 
 async def backup(_, m):
     me = await _.get_me()
