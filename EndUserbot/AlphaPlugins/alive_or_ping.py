@@ -2,12 +2,17 @@ from pyrogram import Client
 from pyrogram.types import Message
 from .utils import eor
 import time
+from config import ALIVE_PIC, SUDO_USERS
 
 async def alive_or_ping(_, m):
+    V = SUDO_USERS.copy()
+    l = await _.get_me()
+    V.append(l.id)
+    if not m.from_user.id in V:
+        return
     st = time.time()
     await eor(""`Checking...`")
     end = time.time()
-    l = await _.get_me()
     men = l.mention
     xD = ""
     xD += f"✥ 𝙊𝙬𝙣𝙚𝙧 :- {men}\n"
