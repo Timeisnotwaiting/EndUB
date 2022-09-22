@@ -30,6 +30,8 @@ async def backup(_, m):
         await ok.edit(f"got {len(MSG_ID)}\n\nsleeping for 10s..")
         await asyncio.sleep(10)
     MSG_ID.reverse()
+    MSG_ID.pop()
+    MSG_ID.pop()
     t_end = time.time()
     itt = str(t_end-t_st).index(".")
     tt = str(t_end-t_st)[0:itt]
