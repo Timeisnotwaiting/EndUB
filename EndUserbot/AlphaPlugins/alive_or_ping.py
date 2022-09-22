@@ -2,13 +2,14 @@ from pyrogram import Client
 from pyrogram.types import Message
 from .utils import eor
 import time
-from config import ALIVE_PIC, SUDO_USERS
+from config import ALIVE_PIC
+from ..database import is_sudo
 
 async def alive_or_ping(_, m):
-    V = SUDO_USERS.copy()
+    sudo = await is_sudo(m.from_user.id)
     l = await _.get_me()
-    V.append(l.id)
-    if not m.from_user.id in V:
+    my_id = l.id
+    if not m.from_user.id == my_id and not sudo:
         return
     st = time.time()
     await eor(""`Checking...`")
