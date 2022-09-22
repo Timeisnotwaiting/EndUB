@@ -18,11 +18,18 @@ async def set_afk(_, m):
     await add_afk(m.from_user.id, details)
     return await eor(m, f"<i>I shall be going AFK...</i>")
 
+USER = []
 async def afk_watcher(_, m):
-    l = await _.get_me()
-    id = l.id
-    unwa = l.username
-    un = "@"+unwa
+    global USER
+    if not USER:
+        l = await _.get_me()
+        id = l.id
+        unwa = l.username
+        un = "@"+unwa
+        USER.append(id)
+        USER.append(un)
+    id = USER[0]
+    un = USER[1]
     afk = await is_afk(id)
     if not afk:
         return
