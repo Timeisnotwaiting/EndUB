@@ -20,3 +20,6 @@ async def pm_protect(_, m):
         return await eor(m, f"<i>pm protection enabled..!</i>")
     else:
         if toggler == "off":
+            return await eor(m, f"<i>pm protection isn't enabled..!</i>")
+        await toggle_pm_perm()
+        return await eor(m, f"<i>pm protection disabled..!</i>")
