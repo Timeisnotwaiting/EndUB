@@ -8,7 +8,7 @@ async def pm_perm():
         return False
     return True
 
-async def toggle_pm():
+async def toggle_pm_perm():
     is_on = await pm_perm()
     if not is_on:
         return await pmdb.insert_one({"pm_perm": 1})
