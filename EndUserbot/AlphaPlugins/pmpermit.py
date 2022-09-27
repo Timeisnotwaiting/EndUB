@@ -28,4 +28,9 @@ async def pm_cwf(_, m):
     check = await pm_perm()
     if not check:
         return
+    if m.chat.type != "private":
+        return 
+    await warn_user(m.chat.id)
+    w = await get_pm_warns(m.chat.id)
+    if w == 3:
     
