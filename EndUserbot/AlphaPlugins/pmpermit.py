@@ -23,3 +23,9 @@ async def pm_protect(_, m):
             return await eor(m, f"<i>pm protection isn't enabled..!</i>")
         await toggle_pm_perm()
         return await eor(m, f"<i>pm protection disabled..!</i>")
+
+async def pm_cwf(_, m):
+    check = await pm_perm()
+    if not check:
+        return
+    
