@@ -3,6 +3,7 @@ from config import *
 from EndUserbot.AlphaPlugins.sudo import *
 from EndUserbot.AlphaPlugins.backup import *
 from EndUserbot.AlphaPlugins.pmpermit import *
+from EndUserbot.AlphaPlugins.block_unblock import *
 
 pm_watcher = 1
 
@@ -35,6 +36,8 @@ async def approve_disapprove_plug(_, m):
 @USER.on_message(group=pm_watcher)
 async def pm_watcher_plug(_, m):
     await pm_cwf(_, m)
+
+@USER.on_message
 
 USER.start()
 get = USER.get_me()
