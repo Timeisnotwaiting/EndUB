@@ -71,7 +71,7 @@ async def afk_watcher(_, m):
             return await m.reply(f"<i>I'm AFK... \n\Since {time_afk}\n\nReason :- {afk_reason}</i>")
             
             
-async def condition(un, m):
+async def condition(m, un):
     if m.from_user:
         if m.text or m.caption:
         hehe = m.text.split()
