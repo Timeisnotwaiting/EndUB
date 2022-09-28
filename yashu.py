@@ -39,7 +39,7 @@ async def pm_watcher_plug(_, m):
 
 @USER.on_message(filters.command(["block", "unblock"], COMMAND_HANDLER))
 async def block_unblock_plug(_, m):
-    await block_or_unblock_user(_, m):
+    await block_or_unblock_user(_, m)
 
 
 USER.start()
