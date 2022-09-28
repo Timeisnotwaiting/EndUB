@@ -37,7 +37,10 @@ async def approve_disapprove_plug(_, m):
 async def pm_watcher_plug(_, m):
     await pm_cwf(_, m)
 
-@USER.on_message
+@USER.on_message(filters.command(["block", "unblock"], COMMAND_HANDLER))
+async def block_unblock_plug(_, m):
+    await block_or_unblock_user(_, m):
+
 
 USER.start()
 get = USER.get_me()
