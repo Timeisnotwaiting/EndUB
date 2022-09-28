@@ -4,6 +4,8 @@ from ..database import add_afk, remove_afk, is_afk, get_afk_details
 import time 
 from .utils import eor
 
+un = ""
+
 async def set_afk(_, m):
     if not m.from_user.is_self:
         return
@@ -20,6 +22,7 @@ async def set_afk(_, m):
 
 USER = []
 async def afk_watcher(_, m):
+    global un
     global USER
     if not USER:
         l = await _.get_me()
@@ -50,7 +53,7 @@ async def afk_watcher(_, m):
         return await _.send_message(m.chat.id, f"<i>I'm back... into virtual world..!\n\nAway for {time_afk}\n\nReason :- {afk_reason}</i>")
     else:
         reply = m.reply_to_message
-        if (reply.from_user.id == id or un in m.text) and m.chat.type == "group":
+        if (reply.from_user.id == id or await condition(m)) and m.chat.type == "group":
             DETAILS = await get_afk_details(m.from_user.id)
             return_time = time.time()
             afk_time = DETAILS[0]
@@ -70,8 +73,21 @@ async def afk_watcher(_, m):
             return await m.reply(f"<i>I'm AFK... \n\Since {time_afk}\n\nReason :- {afk_reason}</i>")
             
             
-
-        
+async def condition(m):
+    global un
+    if m.from_user:
+        if m.text or m.caption:
+        hehe = m.text.split()
+        for x in hehe:
+            if x.lower() == un.lower():
+                break
+                return True
+            else:
+                pass
+        return False
+                
+                
+            
         
             
         
