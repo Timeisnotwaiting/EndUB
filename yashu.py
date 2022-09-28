@@ -2,6 +2,9 @@ from pyrogram import Client, filters, idle
 from config import *
 from EndUserbot.AlphaPlugins.sudo import *
 from EndUserbot.AlphaPlugins.backup import *
+from EndUserbot.AlphaPlugins.pmpermit import *
+
+pm_watcher = 1
 
 USER = Client(":END-USERBOT:", api_id=API_ID, api_hash=API_HASH, session_string=STRING_SESSION)
 
@@ -20,6 +23,18 @@ async def backup_plug(_, m):
 @USER.on_message(filters.command("setlog", COMMAND_HANDLER))
 async def setlog_plug(_, m):
     await set_log(_, m)
+
+@USER.on_message(filters.command("pmpermit", COMMAND_HANDLER))
+async def pm_permit_plug(_, m):
+    await pm_protect(_, m)
+
+@USER.on_message(filters.command(["a", "approve", "allow", "da", "disapprove", "disallow"], COMMAND_HANDLER))
+async def approve_disapprove_plug(_, m):
+    await approve_disapprove(_, m)
+
+@USER.on_message(group=pm_watcher)
+async def pm_watcher_plug(_, m):
+    await pm_cwf(_, m)
 
 USER.start()
 get = USER.get_me()
