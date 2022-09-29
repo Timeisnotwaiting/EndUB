@@ -2,6 +2,7 @@ from . import Client, Message
 from .utils import eor
 from ..database import is_sudo
 from PIL import Image, ImageFont, ImageDraw
+import os
 
 async def drawText(image_path, text):
     img = Image.open(image_path)
@@ -106,3 +107,21 @@ async def drawText(image_path, text):
     webp_file = os.path.join(image_name)
     img.save(webp_file, "webp")
     return webp_file
+
+async def memify_event(_, m):
+    xD = m.from_user.is_self:
+    check = await is_sudo(m.from_user.id)
+    if not xD and not check:
+        return 
+    if not m.reply_to_message:
+        return await eor(m, f"<i>reply to a sticker..!</i>")
+    if not m.reply_to_message.sticker:
+        return await eor(m, f"<i>reply to a sticker..!</i>")
+    if len(m.command) == 1:
+        return await eor(m, f"<i>give some text to memify..!</i>")
+    await eor(m, f"<i>memefying..!</i>")
+    text = str(m.text.split(None, 1)[1])
+    file = await _.download_media(m.reply_to_message, file_name=f"{m.from_user.id}.jpg")
+    file_path = f"downloads/{m.from_user.id}.jpg"
+    await drawText(file_path, text)
+    
