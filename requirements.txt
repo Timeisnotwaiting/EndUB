@@ -2,3 +2,4 @@ pyrogram
 tgcrypto
 motor
 pymongo[srv]
+pillow
