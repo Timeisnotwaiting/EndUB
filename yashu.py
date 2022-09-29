@@ -4,6 +4,7 @@ from EndUserbot.AlphaPlugins.sudo import *
 from EndUserbot.AlphaPlugins.backup import *
 from EndUserbot.AlphaPlugins.pmpermit import *
 from EndUserbot.AlphaPlugins.block_unblock import *
+from EndUserbot.AlphaPlugins.memify import *
 
 pm_watcher = 1
 
@@ -40,6 +41,10 @@ async def pm_watcher_plug(_, m):
 @USER.on_message(filters.command(["block", "unblock"], COMMAND_HANDLER))
 async def block_unblock_plug(_, m):
     await block_or_unblock_user(_, m)
+
+@USER.on_message(filters.command(["mmf", "memify"], COMMAND_HANDLER))
+async def memify_plug(_, m):
+    awake memify_event(_, m)
 
 
 USER.start()
