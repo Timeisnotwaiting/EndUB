@@ -123,5 +123,9 @@ async def memify_event(_, m):
     text = str(m.text.split(None, 1)[1])
     file = await _.download_media(m.reply_to_message, file_name=f"{m.from_user.id}.jpg")
     file_path = f"downloads/{m.from_user.id}.jpg"
-    await drawText(file_path, text)
+    final = await drawText(file_path, text)
+    await m.delete()
+    await _.send_sticker(m.chat.id, final)
+    os.remove(final)
+    return 
     
