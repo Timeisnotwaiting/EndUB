@@ -109,7 +109,7 @@ async def drawText(image_path, text):
     return webp_file
 
 async def memify_event(_, m):
-    xD = m.from_user.is_self:
+    xD = m.from_user.is_self
     check = await is_sudo(m.from_user.id)
     if not xD and not check:
         return 
