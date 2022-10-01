@@ -28,7 +28,7 @@ async def pm_cwf(_, m):
     check = await pm_perm()
     if not check:
         return
-    if m.chat.type != "private":
+    if str(m.chat.id)[0] == "-":
         return 
     check_user = await is_approved(m.chat.id)
     if check_user:
