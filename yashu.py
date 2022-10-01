@@ -44,7 +44,7 @@ async def block_unblock_plug(_, m):
 
 @USER.on_message(filters.command(["mmf", "memify"], COMMAND_HANDLER))
 async def memify_plug(_, m):
-    awake memify_event(_, m)
+    await memify_event(_, m)
 
 
 USER.start()
