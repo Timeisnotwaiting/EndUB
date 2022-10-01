@@ -74,7 +74,7 @@ async def afk_watcher(_, m):
         return await _.send_message(m.chat.id, f"<i>I'm back... into virtual world..!\n\nAway for {time_afk}\n\nReason :- {afk_reason}</i>")
     else:
         reply = m.reply_to_message
-        if (reply.from_user.id == id or await condition(m)) and m.chat.type == "group":
+        if (reply.from_user.id == id or await condition(m, un)) and m.chat.type == "group":
             DETAILS = await get_afk_details(m.from_user.id)
             return_time = time.time()
             afk_time = DETAILS[0]
