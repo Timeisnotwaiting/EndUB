@@ -57,7 +57,7 @@ async def afk_watcher(_, m):
     afk = await is_afk(id)
     if not afk:
         return
-    if m.from_user.is_self:
+    if m.from_user.id == id:
         try:
             if m.text.split()[0][1:].lower() == "afk":
                 return
