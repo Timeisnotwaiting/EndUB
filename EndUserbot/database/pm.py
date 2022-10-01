@@ -23,8 +23,11 @@ async def get_pm_warns(user_id: int):
     hehe = await pmw.find_one({"user_id": user_id})
     if not hehe:
         return 0
-    warns = hehe["warns"]
-    return int(warns)
+    try:
+        warns = hehe["warns"]
+        return int(warns)
+    except:
+        return 0
 
 async def warn_user(user_id: int):
     lmao = await get_pm_warns(user_id)
