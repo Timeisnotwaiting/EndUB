@@ -35,7 +35,7 @@ async def pm_cwf(_, m):
         return
     await warn_user(m.chat.id)
     w = await get_pm_warns(m.chat.id)
-    await 
+    await m.reply(f"{w}")
     if w == 3:
         await _.block_user(m.chat.id)
     
