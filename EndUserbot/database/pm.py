@@ -37,7 +37,7 @@ async def warn_user(user_id: int):
         await pmw.delete_one({"user_id": user_id})
     except:
         pass
-    return await pmw.insert_one({"user_id": user_id}, {"$set": {"warns": lmao}})
+    return await pmw.insert_one({"user_id": user_id}, {"$set": {"warns": current}})
 
 async def is_approved(user_id: int):
     app = await pma.find_one({"user_id": user_id})
