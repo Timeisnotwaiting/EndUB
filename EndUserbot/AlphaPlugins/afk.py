@@ -68,7 +68,7 @@ async def afk_watcher(_, m):
         return_time = time.time()
         afk_time = DETAILS[0]
         afk_reason = DETAILS[1]
-        time_afk = get_readable_time(int(retunr_time-afk_time))
+        time_afk = get_readable_time(int(return_time-afk_time))
         if afk_reason == "None":
             return await _.send_message(m.chat.id, f"<i>I'm back... into virtual world..!\n\nAway for {time_afk}</i>")
         return await _.send_message(m.chat.id, f"<i>I'm back... into virtual world..!\n\nAway for {time_afk}\n\nReason :- {afk_reason}</i>")
@@ -79,7 +79,7 @@ async def afk_watcher(_, m):
             return_time = time.time()
             afk_time = DETAILS[0]
             afk_reason = DETAILS[1]
-            time_afk = get_readable_time(int(retunr_time-afk_time))
+            time_afk = get_readable_time(int(return_time-afk_time))
             if afk_reason == "None":
                 return await m.reply(f"<i>I'm AFK... \n\Since {time_afk}</i>")
             return await m.reply(f"<i>I'm AFK... \n\Since {time_afk}\n\nReason :- {afk_reason}</i>")
@@ -88,7 +88,7 @@ async def afk_watcher(_, m):
             return_time = time.time()
             afk_time = DETAILS[0]
             afk_reason = DETAILS[1]
-            time_afk = get_readable_time(int(retunr_time-afk_time))
+            time_afk = get_readable_time(int(return_time-afk_time))
             if afk_reason == "None":
                 return await m.reply(f"<i>I'm AFK... \n\Since {time_afk}</i>")
             return await m.reply(f"<i>I'm AFK... \n\Since {time_afk}\n\nReason :- {afk_reason}</i>")
