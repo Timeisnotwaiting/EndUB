@@ -7,7 +7,10 @@ async def block_or_unblock_user(_, m):
     if not m.from_user.is_self:
         return
     try:
-        id = await get_id(m)
+        if str(m.chat.id)[0] == "-":
+            id = await get_id(m)
+        else:
+            id = m.chat.id
     except:
         return await eor(m, f"<code>{hl}block | {hl}unblock [ID | USERNAME | REPLY]</code>")
     if m.text.split()[0][1].lower() == "b":
