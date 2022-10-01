@@ -73,4 +73,36 @@ async def afk_watcher(_, m):
             return await _.send_message(m.chat.id, f"<i>I'm back... into virtual world..!\n\nAway for {time_afk}</i>")
         return await _.send_message(m.chat.id, f"<i>I'm back... into virtual world..!\n\nAway for {time_afk}\n\nReason :- {afk_reason}</i>")
     else:
-        
+        if m.chat.type == "private":
+            DETAILS = await get_afk_details(m.from_user.id)
+            return_time = time.time()
+            afk_time = DETAILS[0]
+            afk_reason = DETAILS[1]
+            time_afk = get_readable_time(int(return_time-afk_time))
+            if afk_reason == "None":
+                return await m.reply(f"<i>I'm AFK... \n\Since {time_afk}</i>")
+            return await m.reply(f"<i>I'm AFK... \n\Since {time_afk}\n\nReason :- {afk_reason}</i>")
+        elif m.chat.type == "group":
+            if m.reply_to_message:
+                if m.reply_to_message.from_user.id == id:
+                    DETAILS = await get_afk_details(m.from_user.id)
+                    return_time = time.time()
+                    afk_time = DETAILS[0]
+                    afk_reason = DETAILS[1]
+                    time_afk = get_readable_time(int(return_time-afk_time))
+                    if afk_reason == "None":
+                        return await m.reply(f"<i>I'm AFK... \n\Since {time_afk}</i>")
+                    return await m.reply(f"<i>I'm AFK... \n\Since {time_afk}\n\nReason :- {afk_reason}</i>")
+            else:
+                if m.from_user:
+                    hehe = m.text.split()
+                    if not un in hehe:
+                        return
+                    DETAILS = await get_afk_details(m.from_user.id)
+                    return_time = time.time()
+                    afk_time = DETAILS[0]
+                    afk_reason = DETAILS[1]
+                    time_afk = get_readable_time(int(return_time-afk_time))
+                    if afk_reason == "None":
+                        return await m.reply(f"<i>I'm AFK... \n\Since {time_afk}</i>")
+                    return await m.reply(f"<i>I'm AFK... \n\Since {time_afk}\n\nReason :- {afk_reason}</i>")
