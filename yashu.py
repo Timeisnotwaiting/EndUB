@@ -5,10 +5,19 @@ from EndUserbot.AlphaPlugins.backup import *
 from EndUserbot.AlphaPlugins.pmpermit import *
 from EndUserbot.AlphaPlugins.block_unblock import *
 from EndUserbot.AlphaPlugins.memify import *
+from EndUserbot.AlphaPlugins.afk import *
 
 pm_watcher = 1
 
 USER = Client(":END-USERBOT:", api_id=API_ID, api_hash=API_HASH, session_string=STRING_SESSION)
+
+@USER.on_message(filters.command("afk", COMMAND_HANDLER))
+async def afk_plug(_, m):
+    await set_afk(_, m)
+
+@USER.on_message(group=2)
+async def afk_cwf_plug(_, m):
+    await afk_watcher(_, m)
 
 @USER.on_message(filters.command(["addsudo", "rmvsudo"], COMMAND_HANDLER))
 async def sudo_plug(_, m):
