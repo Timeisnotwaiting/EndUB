@@ -2,7 +2,7 @@ from pyrogram.types import Message
 
 async def get_id(m: Message):
     if str(m.chat.id)[0] != "-":
-        return id = m.chat.id
+        return int(m.chat.id)
     if not m.reply_to_message:
         text = m.text.split()
         un_or_id = text[1]
