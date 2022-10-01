@@ -1,6 +1,6 @@
 from . import Client, Message
 from .utils import eor, get_id
-from EndUserbot.database import pm_perm, toggle_pm_perm, is_approved, toggle_approve
+from EndUserbot.database import pm_perm, toggle_pm_perm, is_approved, toggle_approve, warn_user, get_pm_warns
 from config import COMMAND_HANDLER as hl
 
 async def pm_protect(_, m):
