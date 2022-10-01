@@ -9,11 +9,11 @@ async def block_or_unblock_user(_, m):
     try:
         id = await get_id(m)
     except:
-        return await eor(m, f"<i>{hl}block | {hl}unblock [ID | USERNAME | REPLY]</i>")
+        return await eor(m, f"<code>{hl}block | {hl}unblock [ID | USERNAME | REPLY]</code>")
     if m.text.split()[0][1].lower() == "b":
         await _.block_user(id)
-        return await eor(f"<i>user blocked..!</i>")
+        return await eor(m, f"<code>user blocked..!</code>")
     else:
         await _.unblock_user(id)
-        return await eor(f"<i>user unblocked..!</i>")
+        return await eor(m, f"<code>user unblocked..!</code>")
         
