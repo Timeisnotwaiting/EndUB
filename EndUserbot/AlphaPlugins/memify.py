@@ -114,12 +114,12 @@ async def memify_event(_, m):
     if not xD and not check:
         return 
     if not m.reply_to_message:
-        return await eor(m, f"<i>reply to a sticker..!</i>")
+        return await eor(m, f"reply to a sticker..!")
     if not m.reply_to_message.sticker:
-        return await eor(m, f"<i>reply to a sticker..!</i>")
+        return await eor(m, f"reply to a sticker..!")
     if len(m.command) == 1:
-        return await eor(m, f"<i>give some text to memify..!</i>")
-    await eor(m, f"<i>memefying..!</i>")
+        return await eor(m, f"give some text to memify..!")
+    await eor(m, f"memefying..!")
     text = str(m.text.split(None, 1)[1])
     file = await _.download_media(m.reply_to_message, file_name=f"{m.from_user.id}.jpg")
     file_path = f"downloads/{m.from_user.id}.jpg"
