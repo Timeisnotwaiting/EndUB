@@ -44,7 +44,10 @@ async def approve_disapprove(_, m):
     if not m.from_user.is_self:
         return
     try:
-        id = await get_id(m)
+        if str(m.chat.id)[0] == "-":
+            id = await get_id(m)
+        else:
+            id = m.chat.id
     except:
         return await eor(m, f"<i>{hl}a | {hl}da [ID | USERNAME | REPLY]</i>")
     approved = await is_approved(id)
