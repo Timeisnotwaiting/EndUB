@@ -6,10 +6,15 @@ from EndUserbot.AlphaPlugins.pmpermit import *
 from EndUserbot.AlphaPlugins.block_unblock import *
 from EndUserbot.AlphaPlugins.memify import *
 from EndUserbot.AlphaPlugins.afk import *
+from EndUserbot.AlphaPlugins.alive_or_ping import *
 
 pm_watcher = 1
 
 USER = Client(":END-USERBOT:", api_id=API_ID, api_hash=API_HASH, session_string=STRING_SESSION)
+
+@USER.on_message(filters.command(["alive", "ping", "end"], COMMAND_HANDLER))
+async def alive_plug(_, m):
+    await alive_or_ping(_, m)
 
 @USER.on_message(filters.command("afk", COMMAND_HANDLER))
 async def afk_plug(_, m):
