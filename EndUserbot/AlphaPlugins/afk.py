@@ -74,7 +74,7 @@ async def afk_watcher(_, m):
         return await _.send_message(m.chat.id, f"<i>I'm back... into virtual world..!\n\nAway for {time_afk}\n\nReason :- {afk_reason}</i>")
     else:
         if m.chat.type == "private":
-            DETAILS = await get_afk_details(m.from_user.id)
+            DETAILS = await get_afk_details(id)
             return_time = time.time()
             afk_time = DETAILS[0]
             afk_reason = DETAILS[1]
@@ -85,7 +85,7 @@ async def afk_watcher(_, m):
         elif m.chat.type == "group":
             if m.reply_to_message:
                 if m.reply_to_message.from_user.id == id:
-                    DETAILS = await get_afk_details(m.from_user.id)
+                    DETAILS = await get_afk_details(id)
                     return_time = time.time()
                     afk_time = DETAILS[0]
                     afk_reason = DETAILS[1]
@@ -98,7 +98,7 @@ async def afk_watcher(_, m):
                     hehe = m.text.split()
                     if not un in hehe:
                         return
-                    DETAILS = await get_afk_details(m.from_user.id)
+                    DETAILS = await get_afk_details(id)
                     return_time = time.time()
                     afk_time = DETAILS[0]
                     afk_reason = DETAILS[1]
