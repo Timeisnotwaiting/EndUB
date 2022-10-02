@@ -18,6 +18,12 @@ async def toggle_pm_perm():
         return await pmdb.insert_one({"pm_perm": 1})
     if is_on:
         return await pmdb.delete_one({"pm_perm": 1})
+
+async def get_pm_warns(user_id: int):
+    getter = await pmw.find_one({"user_id": user_id})
+    if not getter:
+        return
+    return int(getter["warns"])
    
 
 async def is_approved(user_id: int):
