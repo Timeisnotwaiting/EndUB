@@ -18,26 +18,7 @@ async def toggle_pm_perm():
         return await pmdb.insert_one({"pm_perm": 1})
     if is_on:
         return await pmdb.delete_one({"pm_perm": 1})
-    
-async def get_pm_warns(user_id: int):
-    hehe = await pmw.find_one({"user_id": user_id})
-    if not hehe:
-        return False, None
-    return True, hehe["warns"]
-    
-
-async def warn_user(user_id: int):
-    lmao, count = await get_pm_warns(user_id)
-    if lmao:
-        current = count
-    else:
-        current = 0
-    current += 1
-    try:
-        await pmw.delete_one({"user_id": user_id})
-    except:
-        pass
-    return await pmw.insert_one({"user_id": user_id}, {"$set": {"warns": current}})
+   
 
 async def is_approved(user_id: int):
     app = await pma.find_one({"user_id": user_id})
