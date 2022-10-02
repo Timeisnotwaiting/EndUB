@@ -6,13 +6,13 @@ from config import COMMAND_HANDLER as hl
 async def pm_protect(_, m):
     if not m.from_user.is_self:
         return
+    check = await pm_perm()
     if len(m.command) != 2:
-        return await eor(m, f"<code>{hl}pmpermit ON | OFF</code>")
+        return await eor(m, f"<code>{hl}pmpermit ON | OFF\n\nStatus :- {"ON" if check else "OFF"}</code>")
     toggler = m.text.split()[1]
     toggler = toggler.lower()
     if not toggler in ["on", "off"]:
-        return await eor(m, f"<code>{hl}pmpermit ON | OFF</code>")
-    check = await pm_perm()
+        return await eor(m, f"<code>{hl}pmpermit ON | OFF\n\nStatus :- {"ON" if check else "OFF"}</code>")
     if check:
         if toggler == "on":
             return await eor(m, f"<i>pm protection is already enabled..!</i>")
