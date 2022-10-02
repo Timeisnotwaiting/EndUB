@@ -7,12 +7,16 @@ async def pm_protect(_, m):
     if not m.from_user.is_self:
         return
     check = await pm_perm()
+    if check:
+        xD = "ON"
+    else:
+        xD = "OFF"
     if len(m.command) != 2:
-        return await eor(m, f"<code>{hl}pmpermit ON | OFF\n\nStatus :- {"ON" if check else "OFF"}</code>")
+        return await eor(m, f"<code>{hl}pmpermit ON | OFF\n\nStatus :- {xD}</code>")
     toggler = m.text.split()[1]
     toggler = toggler.lower()
     if not toggler in ["on", "off"]:
-        return await eor(m, f"<code>{hl}pmpermit ON | OFF\n\nStatus :- {"ON" if check else "OFF"}</code>")
+        return await eor(m, f"<code>{hl}pmpermit ON | OFF\n\nStatus :- {xD}</code>")
     if check:
         if toggler == "on":
             return await eor(m, f"<i>pm protection is already enabled..!</i>")
