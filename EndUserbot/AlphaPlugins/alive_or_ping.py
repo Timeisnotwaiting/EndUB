@@ -17,7 +17,7 @@ async def alive_or_ping(_, m):
     men = l.mention
     xD = ""
     xD += f"✥ 𝙊𝙬𝙣𝙚𝙧 :- {men}\n"
-    xD += f"✥ 𝙋𝙞𝙣𝙜 :- {str(end-st)}\n"
+    xD += f"✥ 𝙋𝙞𝙣𝙜 :- {str((end-st)*1000)[0:5]}\n"
     xD += f"✥ 𝙐𝙗 𝘿𝙚𝙫 :- [ЄƝƊ](t.me/THE_END_NETWORK)\n"
     await m.delete()
     return await m.reply_photo(ALIVE_PIC, caption=xD)
