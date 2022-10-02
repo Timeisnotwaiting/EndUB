@@ -80,8 +80,8 @@ async def afk_watcher(_, m):
             afk_reason = DETAILS[1]
             time_afk = get_readable_time(int(return_time-afk_time))
             if afk_reason == "None":
-                return await m.reply(f"<i>I'm AFK... \n\Since {time_afk}</i>")
-            return await m.reply(f"<i>I'm AFK... \n\Since {time_afk}\n\nReason :- {afk_reason}</i>")
+                return await m.reply(f"<i>I'm AFK... \n\nSince {time_afk}</i>")
+            return await m.reply(f"<i>I'm AFK... \n\nSince {time_afk}\n\nReason :- {afk_reason}</i>")
         elif str(m.chat.id)[0] == "-":
             if m.reply_to_message:
                 if m.reply_to_message.from_user.id == id:
@@ -91,8 +91,8 @@ async def afk_watcher(_, m):
                     afk_reason = DETAILS[1]
                     time_afk = get_readable_time(int(return_time-afk_time))
                     if afk_reason == "None":
-                        return await m.reply(f"<i>I'm AFK... \n\Since {time_afk}</i>")
-                    return await m.reply(f"<i>I'm AFK... \n\Since {time_afk}\n\nReason :- {afk_reason}</i>")
+                        return await m.reply(f"<i>I'm AFK... \n\nSince {time_afk}</i>")
+                    return await m.reply(f"<i>I'm AFK... \n\nSince {time_afk}\n\nReason :- {afk_reason}</i>")
             else:
                 if m.from_user:
                     hehe = m.text.split()
@@ -104,5 +104,5 @@ async def afk_watcher(_, m):
                     afk_reason = DETAILS[1]
                     time_afk = get_readable_time(int(return_time-afk_time))
                     if afk_reason == "None":
-                        return await m.reply(f"<i>I'm AFK... \n\Since {time_afk}</i>")
-                    return await m.reply(f"<i>I'm AFK... \n\Since {time_afk}\n\nReason :- {afk_reason}</i>")
+                        return await m.reply(f"<i>I'm AFK... \n\nSince {time_afk}</i>")
+                    return await m.reply(f"<i>I'm AFK... \n\nSince {time_afk}\n\nReason :- {afk_reason}</i>")
