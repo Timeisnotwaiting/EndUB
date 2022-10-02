@@ -4,7 +4,7 @@ pmdb = db.pm
 
 pma = db.pm_approve
 
-pmw = db.pm_warns
+pmw = db.pmw
 
 async def pm_perm():
     on = await pmdb.find_one({"pm_perm": 1})
