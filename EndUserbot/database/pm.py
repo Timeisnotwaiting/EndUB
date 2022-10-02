@@ -22,9 +22,21 @@ async def toggle_pm_perm():
 async def get_pm_warns(user_id: int):
     getter = await pmw.find_one({"user_id": user_id})
     if not getter:
-        return
+        return 0
     return int(getter["warns"])
-   
+
+async def warn_user(user_id: int):
+    warns = await get_pm_warns(user_id)
+    if warns != 0:
+        await pmw.delete_one({"user_id": user_id})
+    warns += 1
+    await pmw.insert_one({"user_id": user_id}, {"$set": {"warns": warns}}) 
+
+async def reset_warns(user_id: int):
+    try:
+        await pmw.delete_one({"user_id": user_id})
+    except:
+        pass   
 
 async def is_approved(user_id: int):
     app = await pma.find_one({"user_id": user_id})
