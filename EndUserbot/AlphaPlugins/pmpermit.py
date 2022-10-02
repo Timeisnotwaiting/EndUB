@@ -1,6 +1,6 @@
 from . import Client, Message
 from .utils import eor, get_id
-from EndUserbot.database import pm_perm, toggle_pm_perm, is_approved, toggle_approve, warn_user, get_pm_warns
+from EndUserbot.database import pm_perm, toggle_pm_perm, is_approved, toggle_approve, warn_user, get_pm_warns, reset_warns
 from config import COMMAND_HANDLER as hl
 
 async def pm_protect(_, m):
@@ -38,6 +38,7 @@ async def pm_cwf(_, m):
     await m.reply(f"{w}")
     if w == 3:
         await _.block_user(m.chat.id)
+        await reset_warns(m.chat.id)
     
 
 async def approve_disapprove(_, m):
@@ -60,5 +61,6 @@ async def approve_disapprove(_, m):
         if approved:
             return await eor(m, f"<i>user is already approved...!</i>")
         await toggle_approve(id)
+        await reset_warns(id)
         return await eor(m, f"<i>user approved..!</i>")
         
