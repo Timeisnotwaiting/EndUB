@@ -19,4 +19,13 @@ async def type(_, m):
             msg += x
             await m.edit(msg)
             time.sleep(1)
+    else:
+        msg = txt[0]
+        ok = await m.reply(msg)
+        txt = txt[1:]
+        time.sleep(1)
+        for x in txt:
+            msg += x
+            await ok.edit(msg)
+            time.sleep(1)
         
