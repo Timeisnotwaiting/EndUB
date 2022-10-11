@@ -12,7 +12,7 @@ async def get_reply_and_message(m: Message):
             return "photo", message
         elif r.sticker:
             if len(m.command) > 1:
-                message = None
+                message = text
             else:
                 message = None
             return "sticker", message
