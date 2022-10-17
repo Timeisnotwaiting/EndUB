@@ -13,4 +13,5 @@ async def kang(_, m):
     if not v:
         return
     reply, message = await get_reply_and_message(m)
-    
+    if not reply in ["sticker", "photo"]:
+        return await eor(m, "REPLY TO AN IMAGE OR A STICKER")
