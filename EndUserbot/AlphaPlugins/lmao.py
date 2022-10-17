@@ -15,7 +15,7 @@ async def lmao(_, m):
         return
     if reply:
         if m.from_user.is_self:
-            ok = await eor(m, A)
+            ok = await m.edit(A)
         else:
             ok = await reply.reply(m, A)
         time.sleep(1)
