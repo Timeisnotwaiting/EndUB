@@ -1,4 +1,4 @@
-from .utils import eor, get_reply_and_message, verify
+from .utils import eor, get_reply_and_message
 from . import Client, Message
 import asyncio
 from ..database import is_sudo
@@ -14,10 +14,10 @@ def conv(s):
     return des
     
 async def kang(_, m):
-    v = await verify(_, m, m.from_user.id)
-    if not v:
-        return
+    s = await is_sudo(m.from_user.id)
     mine = await _.get_me().id
+    if m.from_user.id != mine and not s:
+        return
     un = (await _.get_users(mine)).username
     if not un:
         un = mine
