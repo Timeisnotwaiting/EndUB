@@ -1,14 +1,5 @@
 from pyrogram import Client, filters, idle
 from config import *
-from EndUserbot.AlphaPlugins.sudo import *
-from EndUserbot.AlphaPlugins.backup import *
-from EndUserbot.AlphaPlugins.pmpermit import *
-from EndUserbot.AlphaPlugins.block_unblock import *
-from EndUserbot.AlphaPlugins.memify import *
-from EndUserbot.AlphaPlugins.afk import *
-from EndUserbot.AlphaPlugins.alive_or_ping import *
-from EndUserbot.AlphaPlugins.stickers import kang
-
 if not API_ID:
     API_ID = int(input("ENTER API_ID: \n"))
 if not API_HASH:
@@ -19,6 +10,15 @@ if not MONGO_DB_URL:
     MONGO_DB_URL = input("ENTER MONGO_DB_URL: \n")
 if not ALIVE_PIC:
     ALIVE_PIC = input("ENTER ALIVE_PIC_LINK: \n")
+from EndUserbot.AlphaPlugins.sudo import *
+from EndUserbot.AlphaPlugins.backup import *
+from EndUserbot.AlphaPlugins.pmpermit import *
+from EndUserbot.AlphaPlugins.block_unblock import *
+from EndUserbot.AlphaPlugins.memify import *
+from EndUserbot.AlphaPlugins.afk import *
+from EndUserbot.AlphaPlugins.alive_or_ping import *
+from EndUserbot.AlphaPlugins.stickers import kang
+
 
 pm_watcher = 1
 
