@@ -8,11 +8,17 @@ from EndUserbot.AlphaPlugins.memify import *
 from EndUserbot.AlphaPlugins.afk import *
 from EndUserbot.AlphaPlugins.alive_or_ping import *
 from EndUserbot.AlphaPlugins.stickers import kang
+from EndUserbot.AlphaPlugins.lmao import lmao
 
 
 pm_watcher = 1
 
 USER = Client(":END-USERBOT:", api_id=API_ID, api_hash=API_HASH, session_string=STRING_SESSION)
+
+
+@USER.on_message(filters.command(["lmao", "lol"], COMMAND_HANDLER))
+async def lmao_plug(_, m):
+    await lmao(_, m)
 
 @USER.on_message(filters.command(["alive", "ping", "end"], COMMAND_HANDLER))
 async def alive_plug(_, m):
