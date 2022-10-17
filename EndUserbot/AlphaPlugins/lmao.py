@@ -21,17 +21,17 @@ async def lmao(_, m):
         time.sleep(1)
         for y in range(0, 10):
             await ok.edit(B)
-            time.sleep(2)
+            time.sleep(1)
             await ok.edit(A)
-            time.sleep(2)
+            time.sleep(1)
     else:
         if m.from_user.is_self:
             ok = await m.edit(A)
         else:
             ok = await m.reply(A)
-        time.sleep(2)
+        time.sleep(1)
         for y in range(0, 10):
             await ok.edit(B)
-            time.sleep(2)
+            time.sleep(1)
             await ok.edit(A)
-            time.sleep(2)
+            time.sleep(1)
