@@ -15,7 +15,8 @@ def conv(s):
     
 async def kang(_, m):
     s = await is_sudo(m.from_user.id)
-    mine = await _.get_me().id
+    mine = await _.get_me()
+    mine = mine.id
     if m.from_user.id != mine and not s:
         return
     un = (await _.get_users(mine)).username
