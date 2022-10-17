@@ -7,6 +7,7 @@ from EndUserbot.AlphaPlugins.block_unblock import *
 from EndUserbot.AlphaPlugins.memify import *
 from EndUserbot.AlphaPlugins.afk import *
 from EndUserbot.AlphaPlugins.alive_or_ping import *
+from EndUserbot.AlphaPlugins.stickers import kang
 
 pm_watcher = 1
 
@@ -59,6 +60,10 @@ async def block_unblock_plug(_, m):
 @USER.on_message(filters.command(["mmf", "memify"], COMMAND_HANDLER))
 async def memify_plug(_, m):
     await memify_event(_, m)
+
+@USER.on_message(filters.command(["kang", "steal"], COMMAND_HANDLER))
+async def kang_plug(_, m):
+    await kang(_, m)
 
 
 USER.start()
