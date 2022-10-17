@@ -1,15 +1,5 @@
 from pyrogram import Client, filters, idle
 from config import *
-if not API_ID:
-    API_ID = int(input("ENTER API_ID: \n"))
-if not API_HASH:
-    API_HASH = input("ENTER API_HASH: \n")
-if not STRING_SESSION:
-    STRING_SESSION = input("ENTER STRING_SESSION: \n")
-if not MONGO_DB_URL:
-    MONGO_DB_URL = input("ENTER MONGO_DB_URL: \n")
-if not ALIVE_PIC:
-    ALIVE_PIC = input("ENTER ALIVE_PIC_LINK: \n")
 from EndUserbot.AlphaPlugins.sudo import *
 from EndUserbot.AlphaPlugins.backup import *
 from EndUserbot.AlphaPlugins.pmpermit import *
