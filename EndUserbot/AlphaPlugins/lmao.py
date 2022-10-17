@@ -9,7 +9,8 @@ async def lmao(_, m):
     id = m.from_user.id
     reply = m.reply_to_message
     x = await is_sudo(id)
-    l = await _.get_me().id
+    lx = await _.get_me()
+    l = lx.id
     if not l and not x:
         return
     if reply:
