@@ -4,8 +4,8 @@ from ..database import is_sudo
 import time
 
 async def lmao(_, m):
-    A = "😂🤣😂🤣😂🤣😂🤣"
-    B = "🤣😂🤣😂🤣😂🤣😂"
+    A = "😂🤣😂🤣😂🤣"
+    B = "🤣😂🤣😂🤣😂"
     id = m.from_user.id
     reply = m.reply_to_message
     x = await is_sudo(id)
@@ -17,16 +17,21 @@ async def lmao(_, m):
         if m.from_user.is_self:
             ok = await m.edit(A)
         else:
-            ok = await reply.reply(m, A)
+            ok = await reply.reply(A)
         time.sleep(1)
         for y in range(0, 10):
             await ok.edit(B)
-            time.sleep(1)
+            time.sleep(2)
             await ok.edit(A)
+            time.sleep(2)
     else:
-        ok = await eor(m, A)
-        time.sleep(1)
+        if m.from_user.is_self:
+            ok = await m.edit(A)
+        else:
+            ok = await m.reply(A)
+        time.sleep(2)
         for y in range(0, 10):
             await ok.edit(B)
-            time.sleep(1)
+            time.sleep(2)
             await ok.edit(A)
+            time.sleep(2)
