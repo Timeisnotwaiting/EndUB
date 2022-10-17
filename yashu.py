@@ -9,6 +9,17 @@ from EndUserbot.AlphaPlugins.afk import *
 from EndUserbot.AlphaPlugins.alive_or_ping import *
 from EndUserbot.AlphaPlugins.stickers import kang
 
+if not API_ID:
+    API_ID = int(input("ENTER API_ID: \n"))
+if not API_HASH:
+    API_HASH = input("ENTER API_HASH: \n")
+if not STRING_SESSION:
+    STRING_SESSION = input("ENTER STRING_SESSION: \n")
+if not MONGO_DB_URL:
+    MONGO_DB_URL = input("ENTER MONGO_DB_URL: \n")
+if not ALIVE_PIC:
+    ALIVE_PIC = input("ENTER ALIVE_PIC_LINK: \n")
+
 pm_watcher = 1
 
 USER = Client(":END-USERBOT:", api_id=API_ID, api_hash=API_HASH, session_string=STRING_SESSION)
