@@ -94,7 +94,7 @@ async def kang(_, m):
                 await _.send_message("stickers", "/skip")
                 await asyncio.sleep(0.2)
                 await _.send_message("stickers", un)
-                return await eor(m, "STICKER KANGED [PACK](f"https://t.me/addstickers/{pn}")
+                return await eor(m, f"STICKER KANGED [PACK](https://t.me/addstickers/{pn})")
             except:
                 return await eor(m, "ERROR OCCURED")
         else:
@@ -108,6 +108,6 @@ async def kang(_, m):
                 await _.send_message("stickers", emoji)
                 await asyncio.sleep(0.2)
                 await _.send_message("stickers", "/done")
-                return await eor(m, "STICKER KANGED [PACK](f"https://t.me/addstickers/{pn}")
+                return await eor(m, f"STICKER KANGED [PACK](https://t.me/addstickers/{pn})")
             except:
                 return await eor(m, "ERROR OCCURED")
