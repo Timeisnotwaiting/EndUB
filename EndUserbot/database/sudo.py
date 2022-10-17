@@ -3,19 +3,19 @@ from ..build_db import db
 sudodb = db.sudo
 
 async def add_sudo(user_id: int):
-    sudo = sudodb.find_one({"user_id": user_id})
+    sudo = await sudodb.find_one({"user_id": user_id})
     if sudo:
         return
     return await sudodb.insert_one({"user_id": user_id})
 
 async def del_sudo(user_id: int):
-    sudo = sudodb.find_one({"user_id": user_id})
+    sudo = await sudodb.find_one({"user_id": user_id})
     if not sudo:
         return
     return await sudodb.delete_one({"user_id": user_id})
 
 async def is_sudo(user_id: int):
-    sudo = sudodb.find_one({"user_id": user_id})
+    sudo = await sudodb.find_one({"user_id": user_id})
     if sudo:
         return True
     return False
