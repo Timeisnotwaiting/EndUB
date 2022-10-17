@@ -72,3 +72,42 @@ async def kang(_, m):
                 return await eor(m, "STICKER KANGED [PACK](f"https://t.me/addstickers/{pn}")
             except:
                 return await eor(m, "ERROR OCCURED")
+    elif reply == "sticker":
+        await _.download_media(m.reply_to_message, file_name="END.webp")
+        y = "downloads/END.webp"
+        pn = pack_name.format(un, "kang")
+        exist = await _.send(
+            GetStickerSet(stickerset=InputStickerSetShortName(short_name=pn))
+        )
+        if not exist:
+            try:
+                await _.send_message("stickers", "/newpack")
+                await asyncio.sleep(0.2)
+                await _.send_message("stickers", un)
+                await asyncio.sleep(0.2)
+                await _.send_document("stickers", y, force_document=True)
+                await asyncio.sleep(0.2)
+                await _.send_message("stickers", emoji)
+                await asyncio.sleep(0.2)
+                await _.send_message("stickers", "/publish")
+                await asyncio.sleep(0.2)
+                await _.send_message("stickers", "/skip")
+                await asyncio.sleep(0.2)
+                await _.send_message("stickers", un)
+                return await eor(m, "STICKER KANGED [PACK](f"https://t.me/addstickers/{pn}")
+            except:
+                return await eor(m, "ERROR OCCURED")
+        else:
+            try:
+                await _.send_message("stickers", "/addsticker")
+                await asyncio.sleep(0.2)
+                await _.send_message("stickers", un)
+                await asyncio.sleep(0.2)
+                await _.send_document("stickers", y, force_document=True)
+                await asyncio.sleep(0.2)
+                await _.send_message("stickers", emoji)
+                await asyncio.sleep(0.2)
+                await _.send_message("stickers", "/done")
+                return await eor(m, "STICKER KANGED [PACK](f"https://t.me/addstickers/{pn}")
+            except:
+                return await eor(m, "ERROR OCCURED")
