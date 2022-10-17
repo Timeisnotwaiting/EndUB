@@ -24,7 +24,7 @@ async def kang(_, m):
         un = mine
     else:
         un += "@" + un
-    reply, message = await get_reply_and_message(m)
+    reply, message = get_reply_and_message(m)
     if not message:
         emoji = "🤧"
     else:
