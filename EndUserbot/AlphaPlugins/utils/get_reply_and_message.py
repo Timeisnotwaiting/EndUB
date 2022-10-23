@@ -1,6 +1,6 @@
-from .. import Message
+from .. import Message, Client
 
-async def get_reply_and_message(m: Message):
+async def get_reply_and_message(_, m: Message):
     text = m.text.split(None, 1)[1]
     r = m.reply_to_message
     if r:
