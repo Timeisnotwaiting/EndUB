@@ -3,3 +3,4 @@ tgcrypto
 motor
 pymongo[srv]
 pillow
+gTTS
